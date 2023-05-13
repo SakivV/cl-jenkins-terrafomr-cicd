@@ -1,6 +1,6 @@
 module "s3-static-website" {
   source = "../../module/"
-  bucket_name  = join("-",[var.env,"staticwebsite-iamaws"])
+  bucket_name  = join("-",["build","staticwebsite-iamaws"])
 }
 
 resource "aws_s3_object" "object" {
