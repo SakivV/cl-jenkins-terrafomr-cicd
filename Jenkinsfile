@@ -31,7 +31,12 @@ pipeline {
                 }
             }
         }
-
-        
+        stage('TerraformInit-Staging') {
+            steps {
+                dir('./env/staging'){
+                    sh 'terraform init'
+                }
+            }
+        }
     }
 }
