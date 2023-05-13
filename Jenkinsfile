@@ -24,35 +24,13 @@ pipeline {
             }
         }
 
-         stage('TerraformApply') {
+        stage('TerraformApply') {
             steps {
                 dir('./env/build'){
                     sh 'terraform apply terraform.tfplan'
                 }
             }
         }
-        stage('TerraformInit-Staging') {
-            steps {
-                dir('./env/staging'){
-                    sh 'terraform init'
-                }
-            }
-        }
-
-         stage('TerraformPlan-Staging') {
-            steps {
-                dir('./env/staging'){
-                    sh 'terraform plan -out terraform.tfplan'
-                }
-            }
-        }
-
-         stage('TerraformApply-Staging') {
-            steps {
-                dir('./env/staging'){
-                    sh 'terraform apply terraform.tfplan'
-                }
-            }
-        }
+        
     }
 }

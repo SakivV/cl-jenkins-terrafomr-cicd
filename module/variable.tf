@@ -2,7 +2,11 @@
 variable "bucket_name" {
   description = "Name of the S3 bucket. Must be Unique across AWS"
   type        = string
-  default = "cloudmonkey-us-region"
+}
+
+variable "env" {
+  description = "Environment Name"
+  type        = string
 }
 
 variable "tags" {
