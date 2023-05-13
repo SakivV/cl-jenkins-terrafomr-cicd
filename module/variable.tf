@@ -7,6 +7,7 @@ variable "bucket_name" {
 variable "env" {
   description = "Environment Name"
   type        = string
+  default     = "prod"
 }
 
 variable "tags" {
