@@ -13,6 +13,17 @@ pipeline {
                     sh 'terraform init'
                 }
             }
-        } 
+        }
+
+        stage('TerraformPlan') {
+            steps {
+                dir('./env/build'){
+                    sh 'terraform plan -out terraform.tfplan'
+                    sh 'ls -la'
+                }
+            }
+        }
+
+        
     }
 }
