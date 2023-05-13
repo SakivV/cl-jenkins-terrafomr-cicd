@@ -38,5 +38,13 @@ pipeline {
                 }
             }
         }
+
+         stage('TerraformPlan-Staging') {
+            steps {
+                dir('./env/staging'){
+                    sh 'terraform plan'
+                }
+            }
+        }
     }
 }
