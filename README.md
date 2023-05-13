@@ -1,1 +1,1 @@
-# cl-jenkins-terrafomr-cicd
+# Simple-Jenkins-Terraform-CICD
