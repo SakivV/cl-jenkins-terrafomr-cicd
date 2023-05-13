@@ -24,6 +24,14 @@ pipeline {
             }
         }
 
+         stage('TerraformApplt') {
+            steps {
+                dir('./env/build'){
+                    sh 'terraform apply terraform.tfplan'
+                }
+            }
+        }
+
         
     }
 }
