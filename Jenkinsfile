@@ -42,7 +42,15 @@ pipeline {
          stage('TerraformPlan-Staging') {
             steps {
                 dir('./env/staging'){
-                    sh 'terraform plan'
+                    sh 'terraform plan -out terraform.tfplan'
+                }
+            }
+        }
+
+         stage('TerraformApply-Staging') {
+            steps {
+                dir('./env/staging'){
+                    sh 'terraform apply terraform.tfplan'
                 }
             }
         }
