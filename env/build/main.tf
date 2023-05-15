@@ -3,8 +3,8 @@ module "s3-static-website" {
   bucket_name  = join("-",["build","staticwebsite-iamaws"])
 }
 
-# resource "aws_s3_object" "object" {
-#   bucket = module.s3-static-website.id
-#   key    = "index.html"
-#   source = "./html/"
-# }
+resource "aws_s3_object" "object" {
+  bucket = module.s3-static-website.s3_bucket_id
+  key    = "index.html"
+  source = "./html/"
+}
