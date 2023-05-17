@@ -6,5 +6,5 @@ module "s3-static-website" {
 resource "aws_s3_object" "object" {
   bucket = module.s3-static-website.s3_bucket_id
   key    = "index.html"
-  source = "./html/"
+  source = "./html/index.html"
 }
