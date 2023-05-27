@@ -31,6 +31,33 @@ pipeline {
                 }
             }
         }
+
+
+        stage('TerraformInit-staging') {
+            steps {
+                dir('./env/staging'){
+                    sh 'pwd'
+                    sh 'terraform init'
+                }
+            }
+        }
+
+        stage('TerraformPlan-staging') {
+            steps {
+                dir('./env/staging'){
+                    sh 'terraform plan -out terraform.tfplan'
+                    sh 'ls -la'
+                }
+            }
+        }
+
+        stage('TerraformApply-staging') {
+            steps {
+                dir('./env/staging'){
+                    sh 'terraform apply terraform.tfplan'
+                }
+            }
+        }
         
     }
 }
