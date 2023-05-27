@@ -9,7 +9,7 @@ terraform {
 
   backend "s3" {
     bucket = "cloudmagic-build-terraform-state"
-    key = "application/staging/class/terraform.tfstate"
+    key = "application/build/class/terraform.tfstate"
     region = "us-east-1"
     dynamodb_table = "terraform_build_dynamo"
   }
@@ -18,6 +18,6 @@ terraform {
 provider "aws" {
   region = var.aws_region
   assume_role {
-    role_arn = "arn:aws:iam::573269413468:role/jenksin-cicd-role"
+    role_arn    = "arn:aws:iam::573269413468:role/jenksin-cicd-role"
   }
 }
