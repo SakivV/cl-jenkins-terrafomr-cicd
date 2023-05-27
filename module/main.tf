@@ -1,3 +1,12 @@
+resource "aws_s3_bucket" "s3_bucket" {
+  bucket = var.bucket_name
+  acl    = "private"
+  website {
+    index_document = "index.html"
+    error_document = "error.html"
+  }
+  force_destroy = true
+}
 
 resource "aws_cloudfront_origin_access_identity" "app_oai" {
   comment = "OAI for cloudfront"
@@ -61,14 +70,4 @@ data "aws_iam_policy_document" "s3_policy" {
 resource "aws_s3_bucket_policy" "bucket_policy" {
   bucket = aws_s3_bucket.s3_bucket.id
   policy = data.aws_iam_policy_document.s3_policy.json
-}
-
-resource "aws_s3_bucket" "s3_bucket" {
-  bucket = var.bucket_name
-  acl    = "private"
-  website {
-    index_document = "index.html"
-    error_document = "error.html"
-  }
-  force_destroy = true
 }
