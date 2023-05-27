@@ -9,7 +9,7 @@ terraform {
 
   backend "s3" {
     bucket = "cloudmagic-build-terraform-state"
-    key = "application/build/class/terraform.tfstate"
+    key = "application/staging/class/terraform.tfstate"
     region = "us-east-1"
     dynamodb_table = "terraform_build_dynamo"
   }
