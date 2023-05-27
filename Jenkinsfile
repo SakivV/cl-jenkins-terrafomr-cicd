@@ -58,6 +58,33 @@ pipeline {
                 }
             }
         }
+
+
+        stage('TerraformInit-prd') {
+            steps {
+                dir('./env/prd'){
+                    sh 'pwd'
+                    sh 'terraform init'
+                }
+            }
+        }
+
+        stage('TerraformPlan-prd') {
+            steps {
+                dir('./env/prd'){
+                    sh 'terraform plan -out terraform.tfplan'
+                    sh 'ls -la'
+                }
+            }
+        }
+
+        stage('TerraformApply-prod') {
+            steps {
+                dir('./env/prd'){
+                    sh 'terraform apply terraform.tfplan'
+                }
+            }
+        }
         
     }
 }
